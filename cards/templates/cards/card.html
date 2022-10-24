@@ -1,4 +1,4 @@
-<article>
+<article id='test_article'>
     <h4>{{ card.question }}</h4>
     {% if not check_card %}
         <p>{{ card.answer }}</p>
@@ -7,7 +7,9 @@
     {% else %}
         <details>
             <summary>Revel Answer</summary>
-            <p>{{ card.answer }}</p>
+            <p id='answer'>{{ card.answer }}
+                <button id="speak"></button>
+            </p>
         </details>
         <hr>
         {% include 'cards/card_check_form.html' with solved=True %}

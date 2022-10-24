@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcards | Home</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" integrity="sha512-RvQxwf+3zJuNwl4e0sZjQeX7kUa3o82bDETpgVCH2RiwYSZVDdFJ7N/woNigN/ldyOOoKw8584jM4plQdt8bhA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <style>
         /* Custom CSS */
     
         :root {
@@ -53,9 +53,9 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Flashcards App</h1>
-        {% include 'navigation.html' %}
+    <header id='test_header'>
+        <h1>Flashcards</h1>
+        {% include 'navigation.html' %}        
     </header>
     <main>
         
@@ -64,6 +64,22 @@
         {% endblock content %}
         
     </main>
+
+    <script>
+        const answer = document.body.querySelector('#answer').textContent
+
+        let msg = new SpeechSynthesisUtterance();
+
+        msg.text = answer
+        msg.lang = 'da'
+        window.speechSynthesis.speak(msg)
+
+        const speak = document.body.querySelector('#speak')
+        speak.addEventListener('click', function() {
+            window.speechSynthesis.speak(msg) 
+        })
+
+    </script>
     
 </body>
 </html>
