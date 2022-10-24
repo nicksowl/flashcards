@@ -6,10 +6,8 @@
         <a href="{% url 'card-update' card.id %}" role='button'>✏️ Edit Card</a>
     {% else %}
         <details>
-            <summary>Revel Answer</summary>
-            <p id='answer'>{{ card.answer }}
-                <button id="speak"></button>
-            </p>
+            <summary>Revel Answer <button id="speak">🔈</button> </summary>
+            <p id='answer'>{{ card.answer }}</p>
         </details>
         <hr>
         {% include 'cards/card_check_form.html' with solved=True %}
