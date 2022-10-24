@@ -10,7 +10,7 @@ class Card(models.Model):
     date_create = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.question
+        return f'{self.answer} - {self.question}'
     
     def move(self, solved):
         new_box = self.box + 1 if solved else BOXES[0]
