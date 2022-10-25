@@ -55,13 +55,18 @@
 <body>
     <header id='test_header'>
         <h1>Flashcards</h1>
-        {% include 'navigation.html' %}        
+        {% include 'navigation.html' %}     
     </header>
     <main>
         
         {% block content %}
             <h2>Welcome to Flashcards app!</h2>
         {% endblock content %}
+
+        <blockquote>
+            <p id="quoteText">Friends don’t spy; true friendship is about privacy, too.</p>
+            <p id="quoteAuthor"><cite>– Stephen King</cite></p>
+          </blockquote> 
         
     </main>
 
@@ -77,6 +82,19 @@
         speak.addEventListener('click', function() {
             window.speechSynthesis.speak(msg) 
         })
+
+
+        fetch("https://type.fit/api/quotes")
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          let randomQuote = Math.floor(Math.random() * 1643)
+          quote = data[randomQuote].text
+          console.log(data[randomQuote]);
+          document.body.querySelector('#quoteText').textContent = data[randomQuote].text
+          document.body.querySelector('#quoteAuthor').textContent = data[randomQuote].author
+        });
 
     </script>
     
